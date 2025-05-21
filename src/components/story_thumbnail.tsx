@@ -1,13 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React, {useRef, useState} from 'react';
-import {PageIndicator} from 'react-native-page-indicator';
-
 import {
   StyleSheet,
   View,
@@ -15,45 +6,40 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
-  ScrollView,
+  FlatList,
   SafeAreaView,
   Dimensions,
   Platform,
   Animated,
+  ScrollView,
 } from 'react-native';
-
 import {profileConfig} from '../config/users';
 import {storiesConfig} from '../config/posts';
 import CircularPaginationIndicator from './pagination';
-
-// const playerRef = useRef<VideoPlayerRef>();
 
 const {width, height} = Dimensions.get('window');
 
 function StoryThumbnail(): React.JSX.Element {
   const scrollX = useRef(new Animated.Value(0));
-  const animatedCurrent = useRef(Animated.divide(scrollX, width))?.current;
+  const animatedCurrent = useRef(Animated.divide(scrollX, width)).current;
   const [pageNumber, setPageNumber] = useState(1);
 
   const handlePagination = (event: any) => {
-    const currentPage = event.nativeEvent.contentOffset.x / width;
+    const currentPage = Math.round(event.nativeEvent.contentOffset.x / width);
     setPageNumber(currentPage + 1);
-    console.log(
-      'I am the page number',
-      event.nativeEvent.contentOffset.x / width,
-    );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Text>I am the story thumbnail</Text> */}
       <View style={styles.mainContainer}>
-        <ScrollView
-          horizontal
+        <FlatList
+          data={profileConfig}
           bounces={false}
-          showsHorizontalScrollIndicator={false}>
-          {profileConfig.map(item => (
-            <TouchableOpacity key={item.id} style={styles.button}>
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => (
+            <TouchableOpacity style={styles.button}>
               <ImageBackground
                 source={item.imageBackground}
                 borderRadius={40}
@@ -64,9 +50,10 @@ function StoryThumbnail(): React.JSX.Element {
                 />
               </ImageBackground>
             </TouchableOpacity>
-          ))}
-        </ScrollView>
+          )}
+        />
       </View>
+
       <View style={styles.imageContainer}>
         <ScrollView
           horizontal
@@ -87,7 +74,7 @@ function StoryThumbnail(): React.JSX.Element {
           ))}
         </ScrollView>
         <CircularPaginationIndicator
-          totalPageCount={6}
+          totalPageCount={storiesConfig.length}
           currentPage={pageNumber}
         />
       </View>
@@ -103,9 +90,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     padding: 5,
     backgroundColor: '#ededed',
-    verticalAlign: 'middle',
-    //justifyContent: '',
-    //alignItems: 'center',
   },
   button: {
     margin: 5,
@@ -113,7 +97,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     height: 70,
     width: 70,
-    borderRadius: 70 / 2,
+    borderRadius: 35,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'red',
@@ -121,8 +105,7 @@ const styles = StyleSheet.create({
   profileImage: {
     height: 60,
     width: 60,
-    borderRadius: 60 / 2,
-    overflow: 'hidden',
+    borderRadius: 30,
     resizeMode: 'stretch',
   },
   containerImage: {
@@ -135,7 +118,6 @@ const styles = StyleSheet.create({
   storyImage: {
     height: Platform.OS === 'ios' ? height * 0.7 : height * 0.8,
     width: width * 0.95,
-    //width: width,
     resizeMode: 'stretch',
     alignSelf: 'center',
     marginTop: height * 0.05,
