@@ -13,6 +13,9 @@ import {
   Animated,
   ScrollView,
 } from 'react-native';
+
+import {useNavigation} from '@react-navigation/native';
+
 import {profileConfig} from '../config/users';
 import {storiesConfig} from '../config/posts';
 import CircularPaginationIndicator from './pagination';
@@ -23,6 +26,8 @@ function StoryThumbnail(): React.JSX.Element {
   const scrollX = useRef(new Animated.Value(0));
   const animatedCurrent = useRef(Animated.divide(scrollX, width)).current;
   const [pageNumber, setPageNumber] = useState(1);
+
+  const navigation = useNavigation();
 
   const handlePagination = (event: any) => {
     const currentPage = Math.round(event.nativeEvent.contentOffset.x / width);
