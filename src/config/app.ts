@@ -37,4 +37,27 @@ export const appConfig = [
         name: 'Fresh To Home',
         logo: freshToHomeLogo,
     }
-]
+];
+
+export const DATA = [
+  {
+    title: 'Main Commerce',
+    data: [{name: 'Amazon'}, {name: 'Flipkart'}, {name: 'Pizza3'}],
+  },
+  {
+    title: 'Food & Beverages',
+    data: [{name: 'Swiggy'}, {name: 'Zomato'}, {name: 'Food Panda'}],
+  },
+  {
+    title: 'Grocery',
+    data: [{name: 'Zepto'}, {name: 'BlinkIt'}, {name: 'BigBasket'}],
+  },
+  {
+    title: 'Fashion',
+    data: [{name: 'Myntra'}, {name: 'Nykaa'}, {name: 'FirstCry'}],
+  },
+  {
+    title: 'Travel',
+    data: [{name: 'Ola'}, {name: 'Uber'}, {name: 'MakeMyTrip'}],
+  }
+];

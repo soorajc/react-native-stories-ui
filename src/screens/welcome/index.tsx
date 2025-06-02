@@ -12,7 +12,8 @@ import {
 import LottieView from 'lottie-react-native';
 import styles from './styles';
 import AppIcon from '../../components/app_Icon';
-import {appConfig} from '../../config/app';
+import {appConfig, DATA} from '../../config/app';
+import CollapsibleAppList from '../../components/section_home';
 
 const {height, width} = Dimensions.get('window');
 
@@ -47,16 +48,7 @@ const WelcomeBoard = () => {
           </View>
         </View>
         <View style={styles.circleContainer}>
-          <FlatList
-            data={appConfig}
-            keyExtractor={(item: any) => item.id.toString()}
-            renderItem={({item}: any) => (
-              <AppIcon title={item.name} id={item.id} logoUrl={item.logo} />
-            )}
-            numColumns={4} // or any number of columns you need
-            columnWrapperStyle={styles.circleContainer} // same style applied to each row
-            contentContainerStyle={{paddingBottom: 20}} // optional
-          />
+          <CollapsibleAppList data={[]} />
         </View>
       </ScrollView>
     </SafeAreaView>

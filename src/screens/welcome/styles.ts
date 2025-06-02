@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#fffff', // You can set a background color for the SafeAreaView
+    backgroundColor: 'white', // You can set a background color for the SafeAreaView
   },
   botAnimation: {
     backgroundColor: '#AD1457',
@@ -31,15 +31,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: height * 0.02,
     marginBottom: height * 0.02,
+    color: 'black',
   },
   circleContainer: {
     padding: 15,
+    //backgroundColor: 'white',
     //marginTop: height * 0.01,
   },
   cardContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   card: {
     //height: height * 0.22,
