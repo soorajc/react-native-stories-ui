@@ -27,7 +27,7 @@ function SplashScreen() {
   return (
     <View style={styles.backgroundStyle}>
       <LottieView
-        source={require('../../assets/ai_bot.json')}
+        source={require('../../assets/lottie/ai_bot.json')}
         autoPlay
         loop
         style={styles.botAnimation}

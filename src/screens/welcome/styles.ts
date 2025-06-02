@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#fff', // You can set a background color for the SafeAreaView
+    backgroundColor: '#fffff', // You can set a background color for the SafeAreaView
   },
   botAnimation: {
     backgroundColor: '#AD1457',
@@ -30,7 +30,48 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Black',
     textAlign: 'center',
     marginTop: height * 0.02,
-  }
+    marginBottom: height * 0.02,
+  },
+  circleContainer: {
+    padding: 15,
+    //marginTop: height * 0.01,
+  },
+  cardContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  card: {
+    //height: height * 0.22,
+    padding: width * 0.02,
+    width: width * 0.45,
+    alignSelf: 'center',
+    backgroundColor: '#4caf50',
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9,
+    borderRadius: height * 0.01,
+    //justifyContent: 'center',
+    alignItems: 'center',
+  },
+  label: {
+    fontFamily: 'Montserrat-Regular',
+    color: '#ffffff',
+    fontSize: height * 0.03,
+    marginTop: height  * 0.01,
+  },
+  value: {
+    fontFamily: 'Montserrat-Bold',
+    color: '#ffffff',
+    fontSize: height * 0.022,
+    marginTop: height  * 0.012,
+  },
+  
 });
 
 export default styles;

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     position: 'absolute',
-    marginTop: height * 0.78,
+    marginTop: height * 0.4,
     width: width,
     height: height * 0.1,
     // backgroundColor: 'red',

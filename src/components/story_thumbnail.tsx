@@ -114,19 +114,39 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   containerImage: {
-    width: width,
-    padding: width * 0.01,
+    // width: width,
+    // padding: width * 0.01,
+    width: width, // Required for pagingEnabled to work properly
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: '#000',
   },
   imageContainer: {
-    height: height * 0.9,
+    height: height * 0.4,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   storyImage: {
-    height: Platform.OS === 'ios' ? height * 0.7 : height * 0.8,
-    width: width * 0.95,
-    resizeMode: 'stretch',
+    // height: Platform.OS === 'ios' ? height * 0.3 : height * 0.3,
+    // width: width,
+    // //resizeMode: 'stretch',
+    // alignSelf: 'center',
+    // marginTop: height * 0.05,
+    // elevation: 5,
+    // aspectRatio: 16 / 9,
+    width: width * 0.9, // slightly less than screen width
+    aspectRatio: 3 / 2, // adjust this based on your image aspect ratio
+    borderRadius: 15,
     alignSelf: 'center',
     marginTop: height * 0.05,
     elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
   },
 });
 
