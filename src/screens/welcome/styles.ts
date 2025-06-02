@@ -74,6 +74,9 @@ const styles = StyleSheet.create({
     fontSize: height * 0.022,
     marginTop: height  * 0.012,
   },
+  paddingBottom: {
+    paddingBottom: height * 0.1,
+  }
   
 });
 

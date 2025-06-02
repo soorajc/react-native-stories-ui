@@ -42,22 +42,22 @@ export const appConfig = [
 export const DATA = [
   {
     title: 'Main Commerce',
-    data: [{name: 'Amazon'}, {name: 'Flipkart'}, {name: 'Pizza3'}],
+    data: appConfig,
   },
   {
     title: 'Food & Beverages',
-    data: [{name: 'Swiggy'}, {name: 'Zomato'}, {name: 'Food Panda'}],
+    data: appConfig,
   },
   {
     title: 'Grocery',
-    data: [{name: 'Zepto'}, {name: 'BlinkIt'}, {name: 'BigBasket'}],
+    data: appConfig,
   },
   {
     title: 'Fashion',
-    data: [{name: 'Myntra'}, {name: 'Nykaa'}, {name: 'FirstCry'}],
+    data: appConfig,
   },
   {
     title: 'Travel',
-    data: [{name: 'Ola'}, {name: 'Uber'}, {name: 'MakeMyTrip'}],
+    data: appConfig,
   }
 ];

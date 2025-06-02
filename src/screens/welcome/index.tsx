@@ -20,7 +20,7 @@ const {height, width} = Dimensions.get('window');
 const WelcomeBoard = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView bounces={false} pagingEnabled>
+      <ScrollView bounces={false} contentContainerStyle={styles.paddingBottom}>
         <View>
           <Text style={styles.welcomeLabel}>SpyNance Ai</Text>
         </View>

@@ -29,6 +29,7 @@ type CollapsibleAppListProps = {
 };
 
 import {DATA} from '../config/app';
+import AppIcon from './app_Icon';
 
 const {height, width} = Dimensions.get('window');
 
@@ -37,16 +38,18 @@ export default function CollapsibleAppList({data}: CollapsibleAppListProps) {
 
   console.log('I am teh currrentActiveSections', currentActiveSections);
 
-  const handleItem = (item: any, section: any) => {
-    if (currentActiveSections.includes(section.title)) {
-      return (
-        <View style={styles.item}>
-          <Text style={styles.title}>{item.name}</Text>
-        </View>
-      );
-    } else {
-      return null;
-    }
+  const handleItem = (data: any) => {
+    return (
+      <FlatList
+        style={{backgroundColor: '#ededed', padding: 5}}
+        data={data}
+        numColumns={4}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <AppIcon title={item.name} logoUrl={item.logo} />
+        )}
+      />
+    );
   };
 
   const handleCollapse = (category: string) => {
@@ -59,19 +62,22 @@ export default function CollapsibleAppList({data}: CollapsibleAppListProps) {
     setActiveSections(currentSections);
   };
 
-  const renderSectionItem = (title: string) => {
+  const renderSectionItem = (title: string, data: any) => {
     const isActive = currentActiveSections.includes(title);
     return (
-      <TouchableOpacity
-        onPress={() => handleCollapse(title)}
-        style={styles.sectionHeader}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.header}>{title}</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <Text style={{color: 'black'}}>{isActive ? '▲' : '▼'} </Text>
-        </View>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          onPress={() => handleCollapse(title)}
+          style={styles.sectionHeader}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.header}>{title}</Text>
+          </View>
+          <View style={styles.iconContainer}>
+            <Text style={{color: 'black'}}>{isActive ? '▲' : '▼'} </Text>
+          </View>
+        </TouchableOpacity>
+        {isActive && handleItem(data)}
+      </View>
     );
   };
 
@@ -79,8 +85,11 @@ export default function CollapsibleAppList({data}: CollapsibleAppListProps) {
     <SectionList
       sections={DATA}
       keyExtractor={(item, index) => item.name + index}
-      renderItem={({item, section}) => handleItem(item, section)}
-      renderSectionHeader={({section: {title}}) => renderSectionItem(title)}
+      //renderItem={({item, section}) => handleItem(item, section)}
+      renderSectionHeader={({section: {title, data}}) =>
+        renderSectionItem(title, data)
+      }
+      renderItem={() => null}
     />
   );
 }
@@ -105,12 +114,12 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   sectionHeader: {
-    borderWidth: 1,
-    margin: 5,
-    borderRadius: 10,
+    borderBottomWidth: 1,
+    marginBottom: 5,
     padding: 15,
     flexDirection: 'row',
-    width: width * 0.9,
+    width: width * 0.93,
+    alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
